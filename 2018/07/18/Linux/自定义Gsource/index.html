@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="shuhong, ge, blog, josh" />
+  <meta name="keywords" content="Linux,IO,GMainLoop," />
 
 
 
@@ -79,14 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Tags">
-<meta property="og:url" content="http://jshuhong.github.io/tags/index.html">
+<meta name="description" content="Glib实现了强大的事件循环分发处理机制，即为GMainLoop。GMainLoop工作于指定的GMainContext，GMainContext有一个GSource列表。GLib 内部定义实现了三种类型的事件源，分别是 Idle, Timeout 和 I/O。同时也支持创建自定义的事件源。 自定义事件源可以将外部事件挂到指定的GMainLoop中，总而在g_main_loop_run时候相应。">
+<meta name="keywords" content="Linux,IO,GMainLoop">
+<meta property="og:type" content="article">
+<meta property="og:title" content="创建一个自定义GSource">
+<meta property="og:url" content="http://jshuhong.github.io/2018/07/18/Linux/自定义Gsource/index.html">
 <meta property="og:site_name" content="Josh&#39;s blog">
+<meta property="og:description" content="Glib实现了强大的事件循环分发处理机制，即为GMainLoop。GMainLoop工作于指定的GMainContext，GMainContext有一个GSource列表。GLib 内部定义实现了三种类型的事件源，分别是 Idle, Timeout 和 I/O。同时也支持创建自定义的事件源。 自定义事件源可以将外部事件挂到指定的GMainLoop中，总而在g_main_loop_run时候相应。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-12T08:10:40.760Z">
+<meta property="og:updated_time" content="2018-07-18T14:00:51.221Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tags">
+<meta name="twitter:title" content="创建一个自定义GSource">
+<meta name="twitter:description" content="Glib实现了强大的事件循环分发处理机制，即为GMainLoop。GMainLoop工作于指定的GMainContext，GMainContext有一个GSource列表。GLib 内部定义实现了三种类型的事件源，分别是 Idle, Timeout 和 I/O。同时也支持创建自定义的事件源。 自定义事件源可以将外部事件挂到指定的GMainLoop中，总而在g_main_loop_run时候相应。">
 
 
 
@@ -116,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://jshuhong.github.io/tags/"/>
+  <link rel="canonical" href="http://jshuhong.github.io/2018/07/18/Linux/自定义Gsource/"/>
 
 
 
 
 
-  <title>Tags | Josh's blog</title>
+  <title>创建一个自定义GSource | Josh's blog</title>
   
 
 
@@ -281,40 +285,229 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jshuhong.github.io/2018/07/18/Linux/自定义Gsource/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Josh">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Josh's blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">Tags</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-                目前共计 9 个标签
+          <h1 class="post-title" itemprop="name headline">创建一个自定义GSource</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-18T21:59:15+08:00">
+                2018-07-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  252
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
             </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/GMainLoop/" style="font-size: 21px; color: #6f6f6f">GMainLoop</a> <a href="/tags/IO/" style="font-size: 30px; color: #111">IO</a> <a href="/tags/Linux/" style="font-size: 30px; color: #111">Linux</a> <a href="/tags/俄罗斯/" style="font-size: 12px; color: #ccc">俄罗斯</a> <a href="/tags/圣彼得堡/" style="font-size: 12px; color: #ccc">圣彼得堡</a> <a href="/tags/序言/" style="font-size: 12px; color: #ccc">序言</a> <a href="/tags/摄影/" style="font-size: 30px; color: #111">摄影</a> <a href="/tags/旅行/" style="font-size: 30px; color: #111">旅行</a> <a href="/tags/澳洲/" style="font-size: 21px; color: #6f6f6f">澳洲</a>
-            </div>
-          </div>
-        
-      </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>Glib实现了强大的事件循环分发处理机制，即为GMainLoop。GMainLoop工作于指定的GMainContext，GMainContext有一个GSource列表。GLib 内部定义实现了三种类型的事件源，分别是 Idle, Timeout 和 I/O。同时也支持创建自定义的事件源。</p>
+<p>自定义事件源可以将外部事件挂到指定的GMainLoop中，总而在g_main_loop_run时候相应。</p>
+<p>首先定义事件源结构体，第一个成员是GSource，其后再是所需数据。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">MySource</span> <span class="title">MySource</span>;</span></span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">struct</span> _<span class="title">MySource</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    GSource _source;</span><br><span class="line">    gchar text[<span class="number">256</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>还要实现GSourceFuncs结构。结构内注册回调函数。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">GSourceFuncs</span> &#123;</span></span><br><span class="line">  gboolean (*prepare)  (GSource    *source,</span><br><span class="line">                        gint       *timeout_);</span><br><span class="line">  gboolean (*check)    (GSource    *source);</span><br><span class="line">  gboolean (*dispatch) (GSource    *source,</span><br><span class="line">                        GSourceFunc callback,</span><br><span class="line">                        gpointer    user_data);</span><br><span class="line">  <span class="keyword">void</span>     (*finalize) (GSource    *source); <span class="comment">/* Can be NULL */</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>将 GSourceFuncs 结构+事件源结构的存储空间宽度作为参数传给 g_source_new 便可构造一个<strong>新的事件源</strong>,继而可使用 g_source_attach 函数将新的事件源添加到主循环上下文中。</p>
+
       
     </div>
     
     
     
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>甩一瓶快乐水</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/weixin.png" alt="Josh 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+            <a href="/tags/IO/" rel="tag"># IO</a>
+          
+            <a href="/tags/GMainLoop/" rel="tag"># GMainLoop</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/18/Linux/IO复用/" rel="next" title="IO复用中的3个函数">
+                <i class="fa fa-chevron-left"></i> IO复用中的3个函数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 

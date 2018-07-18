@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="shuhong, ge, blog, josh" />
+  <meta name="keywords" content="Linux,IO,GMainLoop," />
 
 
 
@@ -79,14 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Tags">
-<meta property="og:url" content="http://jshuhong.github.io/tags/index.html">
+<meta name="description" content="Backgroundevent loop是coding中的一个基础模型。代码基础是I/O多路复用中的三个函数：select, poll和epoll。 glib是一个跨平台的库，在linux上，使用的是poll函数，在window上，使用的是select。而epoll这个接口，在linux2.6中才正式推出，它的效率，比前两者更高，在网络编程中大量使用。而本质上，这三个函数，其实是相同的。 看一段简">
+<meta name="keywords" content="Linux,IO,GMainLoop">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GMainloop">
+<meta property="og:url" content="http://jshuhong.github.io/2018/07/18/Linux/Gmainloop/index.html">
 <meta property="og:site_name" content="Josh&#39;s blog">
+<meta property="og:description" content="Backgroundevent loop是coding中的一个基础模型。代码基础是I/O多路复用中的三个函数：select, poll和epoll。 glib是一个跨平台的库，在linux上，使用的是poll函数，在window上，使用的是select。而epoll这个接口，在linux2.6中才正式推出，它的效率，比前两者更高，在网络编程中大量使用。而本质上，这三个函数，其实是相同的。 看一段简">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-12T08:10:40.760Z">
+<meta property="og:updated_time" content="2018-07-18T14:00:08.418Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tags">
+<meta name="twitter:title" content="GMainloop">
+<meta name="twitter:description" content="Backgroundevent loop是coding中的一个基础模型。代码基础是I/O多路复用中的三个函数：select, poll和epoll。 glib是一个跨平台的库，在linux上，使用的是poll函数，在window上，使用的是select。而epoll这个接口，在linux2.6中才正式推出，它的效率，比前两者更高，在网络编程中大量使用。而本质上，这三个函数，其实是相同的。 看一段简">
 
 
 
@@ -116,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://jshuhong.github.io/tags/"/>
+  <link rel="canonical" href="http://jshuhong.github.io/2018/07/18/Linux/Gmainloop/"/>
 
 
 
 
 
-  <title>Tags | Josh's blog</title>
+  <title>GMainloop | Josh's blog</title>
   
 
 
@@ -281,40 +285,254 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jshuhong.github.io/2018/07/18/Linux/Gmainloop/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Josh">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Josh's blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">Tags</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-                目前共计 9 个标签
+          <h1 class="post-title" itemprop="name headline">GMainloop</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-18T21:58:57+08:00">
+                2018-07-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,246
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
             </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/GMainLoop/" style="font-size: 21px; color: #6f6f6f">GMainLoop</a> <a href="/tags/IO/" style="font-size: 30px; color: #111">IO</a> <a href="/tags/Linux/" style="font-size: 30px; color: #111">Linux</a> <a href="/tags/俄罗斯/" style="font-size: 12px; color: #ccc">俄罗斯</a> <a href="/tags/圣彼得堡/" style="font-size: 12px; color: #ccc">圣彼得堡</a> <a href="/tags/序言/" style="font-size: 12px; color: #ccc">序言</a> <a href="/tags/摄影/" style="font-size: 30px; color: #111">摄影</a> <a href="/tags/旅行/" style="font-size: 30px; color: #111">旅行</a> <a href="/tags/澳洲/" style="font-size: 21px; color: #6f6f6f">澳洲</a>
-            </div>
-          </div>
-        
-      </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h4 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h4><p>event loop是coding中的一个基础模型。代码基础是I/O多路复用中的三个函数：select, poll和epoll。</p>
+<p>glib是一个跨平台的库，在linux上，使用的是poll函数，在window上，使用的是select。而epoll这个接口，在linux2.6中才正式推出，它的效率，比前两者更高，在网络编程中大量使用。而本质上，这三个函数，其实是相同的。</p>
+<p>看一段简单的使用poll的实现。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">pollfd</span> <span class="title">fds</span>[2];</span> <span class="comment">//预先分配两个pollfd结构</span></span><br><span class="line"><span class="keyword">int</span> timeout_msecs = <span class="number">500</span>;  <span class="comment">//注意到这里的timeout为统一值</span></span><br><span class="line"><span class="keyword">int</span> ret;</span><br><span class="line"><span class="keyword">int</span> i;</span><br><span class="line"><span class="comment">/* Open STREAMS device. 打开设备，初始fd和待检测的事件*/</span></span><br><span class="line">fds[<span class="number">0</span>].fd = open(<span class="string">"/dev/dev0"</span>, ...);</span><br><span class="line">fds[<span class="number">1</span>].fd = open(<span class="string">"/dev/dev1"</span>, ...);</span><br><span class="line">fds[<span class="number">0</span>].events = POLLOUT | POLLWRBAND;</span><br><span class="line">fds[<span class="number">1</span>].events = POLLOUT | POLLWRBAND;</span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line">	ret = poll(fds, <span class="number">2</span>, timeout_msecs);</span><br><span class="line">	<span class="keyword">if</span> (ret &gt; <span class="number">0</span>) &#123;</span><br><span class="line">	    <span class="comment">/* An event on one of the fds has occurred. */</span></span><br><span class="line">	    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;<span class="number">2</span>; i++) &#123;   <span class="comment">//遍历fd，</span></span><br><span class="line">		<span class="keyword">if</span> (fds[i].revents &amp; POLLWRBAND) &#123;</span><br><span class="line">		<span class="comment">/* Priority data may be written on device number i. */</span></span><br><span class="line">		...   <span class="comment">///执行该条件下的操作。</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (fds[i].revents &amp; POLLOUT) &#123;</span><br><span class="line">		<span class="comment">/* Data may be written on device number i. */</span></span><br><span class="line">		...</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (fds[i].revents &amp; POLLHUP) &#123;</span><br><span class="line">		<span class="comment">/* A hangup has occurred on device number i. */</span></span><br><span class="line">		...</span><br><span class="line">		&#125;</span><br><span class="line">	    &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>代码分为三部分：</p>
+<blockquote>
+<p>1.分配pollfd并且初始化，即指定fd和对应的待检测事件。<br>2.循环poll。<br>3.对于每个fd，检查revent，并执行相应操作。</p>
+</blockquote>
+<p>这段代码有几个缺点：</p>
+<blockquote>
+<p>1.无法动态添加或删除pollfd<br>2.poll()中调用的参数timeout是预先设置的固定值，循环调用时候，每个pollfd都使用同样的超时阈值。<br>3.前面的代码，在poll返回时，假如有100个fd，则只能按照顺序依次check revent，没有优先级。可能会导致紧急事件拖后，短时间内得不到满足。</p>
+</blockquote>
+<p>1.针对1，构造类统一管理所有的pollfd的，负责添加或者删除的类A。<br>2.针对2，构造管理每一个pollfd的timeout的类B。<br>3.针对3，构造管理每一个pollfd的优先级的类B。</p>
+<p>这样A实际上是B的容器，管理B。</p>
+<p>在GMainloop中，GContext相当于A，GSource相当于类B。</p>
+<p>Gsource保存优先级信息，以链表形式管理pollfd，所以是1对n(n &gt;= 0).<br>作为抽象类，包含三个纯虚函数。</p>
+<p><code>gboolean (*prepare)  (GSource *source, gint *timeout_);</code><br>before poll()，<br>该GSource中的struct pollfd是否希望被poll函数监控，就由prepare函数的返回值来决定。同时，该GSource希望的超时时间，也由参数timeout_返回。<br>需要提前设置source的fd和event。<br> <code>gboolean (*check)    (GSource *source);</code><br>after poll( )，检查pollfd的返回信息，若有事件发生，返回1.<br><code>gboolean (*dispatch) (GSource *source, GSourceFunc callback, gpointer user_data);</code><br>after poll() &amp;&amp; check(), 加入check返回true，则执行对应的dispatch。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">g_main_loop_run</span> <span class="params">(GMainLoop *loop)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    GThread *self = G_THREAD_SELF;</span><br><span class="line">    g_return_if_fail (loop != <span class="literal">NULL</span>);</span><br><span class="line">    g_return_if_fail (g_atomic_int_get (&amp;loop-&gt;ref_count) &gt; <span class="number">0</span>);</span><br><span class="line">    g_atomic_int_inc (&amp;loop-&gt;ref_count);</span><br><span class="line">    loop-&gt;is_running = TRUE;</span><br><span class="line">    <span class="keyword">while</span> (loop-&gt;is_running)</span><br><span class="line">       g_main_context_iterate (loop-&gt;context, TRUE, TRUE, self);</span><br><span class="line">    UNLOCK_CONTEXT (loop-&gt;context);</span><br><span class="line">    g_main_loop_unref (loop);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">static</span> gboolean <span class="title">g_main_context_iterate</span><span class="params">(GMainContext *context, gboolean block,</span></span></span><br><span class="line"><span class="function"><span class="params">		gboolean dispatch, GThread *self)</span> </span>&#123;</span><br><span class="line">	gint max_priority;</span><br><span class="line">	gint timeout;</span><br><span class="line">	gboolean some_ready;</span><br><span class="line">	gint nfds, allocated_nfds;</span><br><span class="line">	GPollFD *fds = <span class="literal">NULL</span>;</span><br><span class="line">	UNLOCK_CONTEXT (context);</span><br><span class="line">	<span class="keyword">if</span> (!context-&gt;cached_poll_array) &#123;</span><br><span class="line">		context-&gt;cached_poll_array_size = context-&gt;n_poll_records;</span><br><span class="line">		context-&gt;cached_poll_array = g_new (GPollFD, context-&gt;n_poll_records);</span><br><span class="line">	&#125;</span><br><span class="line">	allocated_nfds = context-&gt;cached_poll_array_size;</span><br><span class="line">	fds = context-&gt;cached_poll_array;</span><br><span class="line">	UNLOCK_CONTEXT (context);</span><br><span class="line">	g_main_context_prepare(context, &amp;max_priority);</span><br><span class="line">	<span class="keyword">while</span> ((nfds = g_main_context_query(context, max_priority, &amp;timeout, fds,</span><br><span class="line">			allocated_nfds)) &gt; allocated_nfds) &#123;</span><br><span class="line">		LOCK_CONTEXT (context);</span><br><span class="line">		g_free(fds);</span><br><span class="line">		context-&gt;cached_poll_array_size = allocated_nfds = nfds;</span><br><span class="line">		context-&gt;cached_poll_array = fds = g_new (GPollFD, nfds);</span><br><span class="line">		UNLOCK_CONTEXT (context);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (!block)</span><br><span class="line">		timeout = <span class="number">0</span>;</span><br><span class="line">	g_main_context_poll(context, timeout, max_priority, fds, nfds);</span><br><span class="line">	some_ready = g_main_context_check(context, max_priority, fds, nfds);</span><br><span class="line">	<span class="keyword">if</span> (dispatch)</span><br><span class="line">		g_main_context_dispatch(context);</span><br><span class="line">  </span><br><span class="line">	LOCK_CONTEXT (context);</span><br><span class="line">	<span class="keyword">return</span> some_ready;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这段代码反映了glib的处理方式：<br>调用g_main_context_prepare(context, &amp;max_priority)<code>line 28</code>，即遍历所有GSource，依次调用prepare，返回max_priority。并且调用g_main_context_query，遍历所有GSource，将优先级是max_priority的GSource加入到poll的检测set。</p>
+<p>调用poll，g_main_context_poll。之后check每个source，选出check返回true的GSource，即事件发生的GSource。添加到一个内部链表中。</p>
+<p>调用g_main_context_dispatch(context)。</p>
+<p>官方文档摘：</p>
+<p>URL： <a href="https://developer.gnome.org/glib/2.56/glib-The-Main-Event-Loop.html#g-source-add-poll" target="_blank" rel="noopener">https://developer.gnome.org/glib/2.56/glib-The-Main-Event-Loop.html#g-source-add-poll</a></p>
+<p>To allow multiple independent sets of sources to be handled in different <strong>threads</strong>, each source is associated with a GMainContext. A <strong>GMainContext</strong> can only be running in a single thread, but sources can be added to it and removed from it from other threads.</p>
+<p>Each event source is assigned a <strong>priority</strong>. The default priority, G_PRIORITY_DEFAULT, is 0. Values less than 0 denote higher priorities. Values greater than 0 denote lower priorities. Events from high priority sources are always processed before events from lower priority sources.</p>
+<p>The GMainLoop data type represents a main event loop. A GMainLoop is created with <strong>g_main_loop_new()</strong>. After adding the initial event sources, <strong>g_main_loop_run()</strong> is called. This continuously <strong>checks</strong> for new events from each of the event sources and <strong>dispatches</strong> them. Finally, the processing of an event from one of the sources leads to a call to <strong>g_main_loop_quit() to exit</strong> the main loop, and g_main_loop_run() returns.</p>
+<p><strong>Creating new source types</strong><br>One of the unusual features of the GMainLoop functionality is that new types of event source can be created and used <em>in addition to the builtin type of event source</em>. A new event source type is used for handling GDK events. A new source type is created by “deriving” from the GSource structure. The derived type of source is represented by a structure that has the GSource structure as <em>a first element</em>, and other elements specific to the new source type. To create an instance of the new source type, call g_source_new() passing in the <strong>size</strong> of the derived structure and <strong>a table of functions</strong>. These GSourceFuncs determine the behavior of the new source type.</p>
+
       
     </div>
     
     
     
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>甩一瓶快乐水</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/weixin.png" alt="Josh 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+            <a href="/tags/IO/" rel="tag"># IO</a>
+          
+            <a href="/tags/GMainLoop/" rel="tag"># GMainLoop</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/29/镜头后的视界/暴走行1/" rel="next" title="暴走行 in Russia">
+                <i class="fa fa-chevron-left"></i> 暴走行 in Russia
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/18/Linux/IO复用/" rel="prev" title="IO复用中的3个函数">
+                IO复用中的3个函数 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -347,8 +565,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -434,6 +661,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Background"><span class="nav-number">1.</span> <span class="nav-text">Background</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
